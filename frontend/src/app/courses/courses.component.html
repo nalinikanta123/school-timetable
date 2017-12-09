@@ -1,0 +1,12 @@
+<h2>Courses</h2>
+<button class="btn btn-primary" routerLink="/course-detail">Add Course</button>
+<table class="table">
+  <tr *ngFor="let item of items">
+    <td>{{item.shortName}}</td>
+    <td>{{item.fullName}}</td>
+    <td>
+      <button class="btn btn-primary" routerLink="/course-detail/{{item.id}}">Edit</button>
+      <button class="btn btn-primary" (click)="delete(item)">Delete</button>
+    </td>
+  </tr>
+</table>

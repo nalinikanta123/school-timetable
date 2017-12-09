@@ -1,0 +1,17 @@
+<div *ngIf="item"><h2>
+  Student: {{item.name}}
+</h2>
+  <div><span>Id: </span>{{item.id}}</div>
+
+  <div>
+    <label>First name:
+      <input class="form-control" [(ngModel)]="item.firstName" placeholder="name">
+    </label>
+
+    <label>Surname:
+      <input class="form-control" [(ngModel)]="item.surName" placeholder="name">
+    </label>
+  </div>
+  <button class="btn btn-primary" (click)="save()">save</button>
+  <button class="btn btn-primary" (click)="goBack()">go back</button>
+</div>

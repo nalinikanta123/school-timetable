@@ -1,0 +1,28 @@
+<div *ngIf="item"><h2>
+  Course: {{item.fullName}}
+</h2>
+  <div><span>Id: </span>{{item.id}}</div>
+
+  <div>
+    <div class="form-group">
+      <label>Short name:
+        <input class="form-control" [(ngModel)]="item.shortName" placeholder="name">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Full name:
+        <input class="form-control" [(ngModel)]="item.fullName" placeholder="name">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Syllabus
+        <textarea class="form-control" [(ngModel)]="item.syllabus"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" (click)="save()">save</button>
+  <button class="btn btn-primary" (click)="goBack()">go back</button>
+</div>
