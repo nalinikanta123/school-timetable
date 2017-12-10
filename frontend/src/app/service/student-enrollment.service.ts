@@ -1,23 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AbstractService} from "../abstract/abstract-service";
-import {Classes} from "../entity/classes";
+import {Enrollment} from "../entity/enrollment";
 import {HttpClient} from "@angular/common/http";
 import {MessageService} from "./message.service";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class ClassesService extends AbstractService<Classes>{
-
+export class StudentEnrollmentService extends AbstractService<Enrollment> {
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);
   }
 
   getRestApiUrl(): string {
-    return "http://localhost:8080/classes";
+    return 'http://localhost:8080/enrollment';
   }
 
-  getByCourseId(id : Number) :Observable<Classes[]> {
-    const url = `${this.getRestApiUrl()}/course/${id}`;
-    return this._http.get<Classes[]>(url)
+  getEnrollmentsByStudentId(id: number): Observable<Enrollment[]> {
+    return this.getAll(); //todo missing right implementation
   }
 }

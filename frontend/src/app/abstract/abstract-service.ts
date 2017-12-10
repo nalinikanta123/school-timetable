@@ -12,6 +12,10 @@ const httpOptions = {
 
 export class AbstractService<T extends AbstractEntity> {
 
+  get _http(): HttpClient {
+    return this.http;
+  }
+
   getRestApiUrl(): string {
     throw new Error('You have to implement the method getRestApiUrl!');
   }
@@ -20,37 +24,38 @@ export class AbstractService<T extends AbstractEntity> {
   }
 
 
+
   getAll(): Observable<T[]> {
-    this.log('StudentService: fetched students');
-    return this.http.get<T[]>(this.getRestApiUrl());
+    this.log('Service: fetched');
+    return this._http.get<T[]>(this.getRestApiUrl());
   }
 
   getById(id: number): Observable<T> {
-    this.log(`StudentService: fetched student id=${id}`);
+    this.log(`Service: fetched item from ${this.getRestApiUrl()} with id=${id}`);
     const url = `${this.getRestApiUrl()}/${id}`;
-    return this.http.get<T>(url)
+    return this._http.get<T>(url)
   }
 
-  addOrUpdate(student: T): Observable<T> {
-    console.log(student);
-    return this.http.post<T>(this.getRestApiUrl(), student, httpOptions).pipe(
-      tap(_ => this.log(`added student id=${student.id}`)),
-      catchError(this.handleError<any>('addOrUpdateStudent'))
+  addOrUpdate(item: T): Observable<T> {
+    return this._http.post<T>(this.getRestApiUrl(), item, httpOptions).pipe(
+      tap(_ => this.log(`added item with id=${item.id}`)),
+      catchError(this.handleError<any>('addOrUpdate'))
     );
   }
 
-  delete(student: T): Observable<T> {
-    const id = typeof student === 'number' ? student : student.id;
+  delete(item: T): Observable<T> {
+    const id = typeof item === 'number' ? item : item.id;
     const url = `${this.getRestApiUrl()}/${id}`;
     console.log(url);
-    return this.http.delete<T>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted student id=${id}`)),
-      catchError(this.handleError<any>('deleteStudent'))
+    return this._http.delete<T>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted id=${id}`)),
+      catchError(this.handleError<any>('delete'))
     );
   }
 
   private log(message: string) {
-    this.messageService.add('StudentService: ' + message);
+    console.log(message);
+    // this.messageService.add('Service: ' + message);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

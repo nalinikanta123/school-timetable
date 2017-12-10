@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractMasterComponent} from "../abstract/abstract-master-component";
 import {Classes} from "../entity/classes";
 import {ClassesService} from "../service/classes.service";
@@ -8,7 +8,7 @@ import {ClassesService} from "../service/classes.service";
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.css']
 })
-export class ClassesComponent extends AbstractMasterComponent<Classes, ClassesService>{
+export class ClassesComponent extends AbstractMasterComponent<Classes, ClassesService> {
   constructor(service: ClassesService) {
     super(service);
   }

@@ -1,17 +1,24 @@
-import {StudentService} from "../service/student.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {AbstractService} from "./abstract-service";
-import {Student} from "../entity/student";
 import {AbstractEntity} from "./abstract-entity";
 
 export class AbstractDetailComponent<T extends AbstractEntity, S extends AbstractService<T>> {
 
-  item : T;
+  private _item: T;
 
   constructor(private route: ActivatedRoute,
-              private service: S,
+              private _service: S,
               private location: Location) {
+  }
+
+
+  get item(): T {
+    return this._item;
+  }
+
+  get service(): S {
+    return this._service;
   }
 
   ngOnInit() {
@@ -23,16 +30,17 @@ export class AbstractDetailComponent<T extends AbstractEntity, S extends Abstrac
   }
 
   save(): void {
-    this.service.addOrUpdate(this.item)
-      .subscribe(() => this.goBack());
+    this._service.addOrUpdate(this._item).subscribe(() => this.goBack());
   }
 
-  loadById() : void {
+  loadById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     if (id != 0) {
-      this.service.getById(id).subscribe(student => this.item = student)
+      console.log("Load entity with id: " + id);
+      this._service.getById(id).subscribe(student => this._item = student)
     } else {
-       this.item = Object.create(AbstractEntity);
+      console.log("Create empty abstract entity");
+      this._item = Object.create(AbstractEntity);
     }
   }
 }

@@ -14,9 +14,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {CoursesComponent} from './courses/courses.component';
 import {CoursesDetailComponent} from './course-detail/courses-detail.component';
 import {ClassesComponent} from './classes/classes.component';
-import {ClassDetailComponent} from './class-detail/class-detail.component';
 import {CourseService} from "./service/course.service";
 import {ClassesService} from "./service/classes.service";
+import {ClassesDetailComponent} from './classes-detail/classes-detail.component';
+import {StudentTimetableComponent} from './student-timetable/student-timetable.component';
+import {StudentEnrollmentComponent} from './student-enrollment/student-enrollment.component';
+import {StudentEnrollmentService} from "./service/student-enrollment.service";
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import {ClassesService} from "./service/classes.service";
     CoursesComponent,
     CoursesDetailComponent,
     ClassesComponent,
-    ClassDetailComponent
+    ClassesDetailComponent,
+    StudentTimetableComponent,
+    StudentEnrollmentComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,7 @@ import {ClassesService} from "./service/classes.service";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ClassesService, CourseService, StudentService, MessageService],
+  providers: [StudentEnrollmentService, ClassesService, CourseService, StudentService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

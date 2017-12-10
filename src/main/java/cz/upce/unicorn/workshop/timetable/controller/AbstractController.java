@@ -10,22 +10,22 @@ public abstract class AbstractController<T> {
     protected abstract AbstractRepository<T> getRepository();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<T> students() {
+    public List<T> getAll() {
         return getRepository().findAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public T getStudentById(@PathVariable Integer id) {
+    public T getById(@PathVariable Integer id) {
         return getRepository().findById(id);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public T saveOrUpdateStudent(@RequestBody T student) {
-        return getRepository().save(student);
+    @RequestMapping(value = "", method = {RequestMethod.POST, RequestMethod.PUT})
+    public T saveOrUpdate(@RequestBody T item) {
+        return getRepository().save(item);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteStudent(@PathVariable Integer id) {
+    public void delete(@PathVariable Integer id) {
         getRepository().delete(id);
     }
 }

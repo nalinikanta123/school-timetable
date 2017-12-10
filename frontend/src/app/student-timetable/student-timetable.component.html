@@ -1,0 +1,21 @@
+<app-student-enrollment></app-student-enrollment>
+
+<table>
+  <tr >
+    <td></td>
+    <td *ngFor="let time of timetableHours">
+      {{time.value}}
+      <!--{{getEnrolledSubjects(day, time)}}-->
+    </td>
+  </tr>
+  <tr *ngFor="let day of days">
+    <td>{{day}}</td>
+    <td *ngFor="let time of timetableHours">
+      <span *ngIf="getEnrolledSubjects(day, time.name)">
+        {{getEnrolledSubjects(day, time.name).classes.room}}
+      </span>
+
+    </td>
+  </tr>
+</table>
+
