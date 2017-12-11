@@ -6,6 +6,7 @@
     <td>{{item.firstName}} {{item.surName}}</td>
     <td>
       <button class="btn btn-primary" routerLink="/student-timetable/{{item.id}}">Timetable</button>
+      <button class="btn btn-primary" routerLink="/student/enrolled/{{item.id}}">Classes</button>
       <button class="btn btn-primary" routerLink="/student-detail/{{item.id}}">Edit</button>
       <button class="btn btn-primary" (click)="delete(item)">Delete</button>
     </td>

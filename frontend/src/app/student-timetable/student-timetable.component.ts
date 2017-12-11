@@ -22,7 +22,7 @@ export class StudentTimetableComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.enrollmentService.getAll().subscribe(items => this.enrollments = items);
+    this.enrollmentService.findEnrollmentsByStudentId(id).subscribe(items => this.enrollments = items);
     this.days = EnumValues.getNames(DayOfWeek);
     this.timetableHours = EnumValues.getNamesAndValues(TimeEnum);
     console.log(this.enrollments);

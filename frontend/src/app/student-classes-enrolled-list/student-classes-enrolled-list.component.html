@@ -1,0 +1,15 @@
+<h2>Enrollments of the student</h2>
+<div class="jumbotron">
+  <app-student-enrollment></app-student-enrollment>
+</div>
+<table class="table" *ngIf="items">
+  <tr *ngFor="let item of items">
+    <td>{{item.classes.dayOfWeek}}</td>
+    <td>{{item.classes.time}}</td>
+    <td>{{item.classes.course.fullName}}</td>
+    <td>{{item.classes.room}}</td>
+    <td>
+      <button class="btn btn-primary" (click)="delete(item)">Unenroll</button>
+    </td>
+  </tr>
+</table>

@@ -26,4 +26,9 @@ public class EnrollmentController extends AbstractController<Enrollment> {
     public List<Enrollment> findEnrollmentsByEnrolledClassId(@PathVariable Integer id) {
         return enrollmentRepository.findEnrollmentByClassesId(id);
     }
+
+    @RequestMapping(value = "/student/{id}")
+    public List<Enrollment> findEnrollmentByStudentId(@PathVariable Integer id) {
+        return enrollmentRepository.findEnrollmentByStudentId(id);
+    }
 }

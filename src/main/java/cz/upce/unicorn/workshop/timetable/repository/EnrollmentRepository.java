@@ -7,6 +7,8 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface EnrollmentRepository extends AbstractRepository<Enrollment> {
-//    @Query("select e from Enrollment e join e.classes c where  c.id = :id")
+
     List<Enrollment> findEnrollmentByClassesId(Integer id);
+
+    List<Enrollment> findEnrollmentByStudentId(Integer id);
 }
