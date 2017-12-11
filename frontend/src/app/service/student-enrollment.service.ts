@@ -18,4 +18,9 @@ export class StudentEnrollmentService extends AbstractService<Enrollment> {
   getEnrollmentsByStudentId(id: number): Observable<Enrollment[]> {
     return this.getAll(); //todo missing right implementation
   }
+
+  findEnrollmentsByClassId(id: number): Observable<Enrollment[]> {
+    const url = `${this.getRestApiUrl()}/classes/${id}`;
+    return this._http.get<Enrollment[]>(url)
+  }
 }

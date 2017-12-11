@@ -1,24 +1,27 @@
 <div>
+  <h3>Student enrollment</h3>
   <div *ngIf="studentModel">
     Student: {{studentModel.firstName}} {{studentModel.surName}}
   </div>
-  <label>Course:
-    <select [(ngModel)]="selectedCourse" (change)="selectedCourseChanged()">
-      <option *ngFor="let c of coursesOptions" [ngValue]="c">{{c.fullName}}</option>
-    </select>
-  </label>
+  <div class="form-row">
+    <div>
+      <label>Course:
+        <select class="form-control" [(ngModel)]="selectedCourse" (change)="selectedCourseChanged()">
+          <option *ngFor="let c of coursesOptions" [ngValue]="c">{{c.fullName}}</option>
+        </select>
+      </label>
+    </div>
 
-  <div *ngIf="selectedCourse">
-    <label>Classes:
-      <select [(ngModel)]="selectedClasses">
-        <option *ngFor="let c of classesOptions" [ngValue]="c">{{c.room}}</option>
-      </select>
-    </label>
+    <div *ngIf="selectedCourse">
+      <label>Classes:
+        <select class="form-control" [(ngModel)]="selectedClasses">
+          <option *ngFor="let c of classesOptions" [ngValue]="c">{{c.room}}</option>
+        </select>
+      </label>
+    </div>
   </div>
-
   <div *ngIf="selectedClasses">
-    <button (click)="enrollSubmitted()">Enroll</button>
+    <button class="btn btn-primary" (click)="enrollSubmitted()">Enroll</button>
   </div>
-
 
 </div>

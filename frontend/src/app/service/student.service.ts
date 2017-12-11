@@ -13,4 +13,6 @@ export class StudentService extends AbstractService<Student> {
   getRestApiUrl(): string {
     return 'http://localhost:8080/student';
   }
+
+
 }

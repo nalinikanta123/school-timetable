@@ -1,13 +1,11 @@
 package cz.upce.unicorn.workshop.timetable.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import cz.upce.unicorn.workshop.timetable.model.TimeEnum;
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.DayOfWeek;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class Classes  {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
 //    @JsonManagedReference
-    @JsonIgnore
+//    @JsonIgnore
     private Course course;
 
     @OneToMany(mappedBy = "classes")

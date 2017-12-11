@@ -8,6 +8,7 @@
     <td>{{item.dayOfWeek}}</td>
     <!--<td>{{item.course.shortName}}</td>-->
     <td>
+      <button class="btn btn-primary" routerLink="/students/classes/{{item.id}}">Students</button>
       <button class="btn btn-primary" routerLink="/classes-detail/{{item.id}}">Edit</button>
       <button class="btn btn-primary" (click)="delete(item)">Delete</button>
     </td>

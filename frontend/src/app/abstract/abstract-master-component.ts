@@ -1,6 +1,4 @@
 import {OnInit} from "@angular/core";
-import {Student} from "../entity/student";
-import {StudentService} from "../service/student.service";
 import {AbstractService} from "./abstract-service";
 import {AbstractEntity} from "./abstract-entity";
 
@@ -8,7 +6,11 @@ export class AbstractMasterComponent<T extends AbstractEntity, S extends Abstrac
 
   items: T[];
 
-  constructor(private service: S) {
+  constructor(private _service: S) {
+  }
+
+  get service(): S {
+    return this._service;
   }
 
   ngOnInit() {
@@ -16,11 +18,11 @@ export class AbstractMasterComponent<T extends AbstractEntity, S extends Abstrac
   }
 
   private getAll() {
-    this.service.getAll().subscribe(items => this.items = items);
+    this._service.getAll().subscribe(items => this.items = items);
   }
 
   delete(item: T): void {
     this.items = this.items.filter(h => h !== item);
-    this.service.delete(item).subscribe();
+    this._service.delete(item).subscribe();
   }
 }

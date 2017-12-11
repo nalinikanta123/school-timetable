@@ -5,7 +5,6 @@ import {Enrollment} from "../entity/enrollment";
 import {DayOfWeek} from "../entity/day-of-week";
 import {EnumValues} from "enum-values";
 import {TimeEnum} from "../entity/time-enum";
-import {EnumValueType} from "enum-values/src/enumValues";
 
 @Component({
   selector: 'app-student-timetable',
@@ -30,13 +29,13 @@ export class StudentTimetableComponent implements OnInit {
   }
 
   getEnrolledSubjects(day, time): Enrollment {
-    // console.log(day, time);
-    // this.enrollments.filter(enrs => console.log(enrs.classes.time == time));
-    let enr = this.enrollments.filter(enrs => (enrs.classes.dayOfWeek === day && enrs.classes.time == time));
-    if (enr.length > 0) {
-      return enr[0];
-    } else {
-      return null;
+    if (this.enrollments != null) {
+      let enr = this.enrollments.filter(enrs => (enrs.classes.dayOfWeek === day && enrs.classes.time == time));
+      if (enr.length > 0) {
+        return enr[0];
+      } else {
+        return null;
+      }
     }
   }
 }

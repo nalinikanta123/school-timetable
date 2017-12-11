@@ -7,11 +7,13 @@ import {CoursesComponent} from "./courses/courses.component";
 import {ClassesComponent} from "./classes/classes.component";
 import {ClassesDetailComponent} from "./classes-detail/classes-detail.component";
 import {StudentTimetableComponent} from "./student-timetable/student-timetable.component";
+import {StudentsClassesEnrolledComponent} from "./students-classes-enrolled/students-classes-enrolled.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/students', pathMatch: 'full' },
   {path: 'students', component: StudentsComponent},
+  {path: 'students/classes/:id', component: StudentsClassesEnrolledComponent},
   {path: 'student-timetable/:id', component: StudentTimetableComponent},
   {path: 'student-detail/:id', component: StudentDetailComponent},
   {path: 'student-detail', component: StudentDetailComponent},

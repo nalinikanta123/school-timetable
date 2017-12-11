@@ -4,6 +4,25 @@
   <div><span>Id: </span>{{item.id}}</div>
 
   <div>
+    <label>Day:
+      <select class="form-control" [(ngModel)]="selectedDayOfWeek" (change)="selectedDayOfWeekChanged()">
+        <option *ngFor="let c of dayOfWeekOptions" [ngValue]="c">{{c.name}}</option>
+      </select>
+    </label>
+
+    <label>Time:
+      <select class="form-control" [(ngModel)]="selectedTime" (change)="selectedTimeChanged()">
+        <option *ngFor="let c of timeOptions" [ngValue]="c">{{c.name}}</option>
+      </select>
+    </label>
+
+    <label>Course:
+      <select class="form-control" [(ngModel)]="selectedCourse" (change)="selectedCourseChanged()">
+        <option *ngFor="let c of courseOptions" [ngValue]="c">{{c.fullName}}</option>
+      </select>
+    </label>
+
+
     <label>Room:
       <input class="form-control" [(ngModel)]="item.room" >
     </label>

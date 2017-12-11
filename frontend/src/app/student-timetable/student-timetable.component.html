@@ -1,7 +1,11 @@
-<app-student-enrollment></app-student-enrollment>
+<h2>Student timetable</h2>
+
+<div class="jumbotron">
+  <app-student-enrollment></app-student-enrollment>
+</div>
 
 <table>
-  <tr >
+  <tr>
     <td></td>
     <td *ngFor="let time of timetableHours">
       {{time.value}}
