@@ -3,7 +3,9 @@
 <table class="table">
   <tr *ngFor="let item of items">
     <td>{{item.id}}</td>
-    <td>{{item.firstName}} {{item.surName}}</td>
+    <td>{{item.firstName}} {{item.lastName}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.userName}}</td>
     <td>
       <button class="btn btn-primary" routerLink="/student-timetable/{{item.id}}">Timetable</button>
       <button class="btn btn-primary" routerLink="/student/enrolled/{{item.id}}">Classes</button>

@@ -3,6 +3,9 @@ import {AbstractEntity} from "../abstract/abstract-entity";
 
 export class Student extends AbstractEntity {
   firstName: string;
-  surName: string;
+  lastName: string;
+  userName: string;
+  email: string;
+  isActive: boolean;
   enrollments:Enrollment[];
 }

@@ -19,7 +19,13 @@ public class Student {
 
     private String firstName;
 
-    private String surName;
+    private String lastName;
+
+    private String userName;
+
+    private String email;
+
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "student")
     @JsonIgnore

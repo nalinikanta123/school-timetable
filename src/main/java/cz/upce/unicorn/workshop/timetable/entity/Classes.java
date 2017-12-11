@@ -27,6 +27,8 @@ public class Classes  {
     
     private String room;
 
+    private String lecturerName;
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
 //    @JsonManagedReference
