@@ -28,4 +28,12 @@ public class ClassesController extends AbstractController<Classes> {
         return classesRepository.findByCourseId(id);
     }
 
+    @Override
+    public Classes saveOrUpdate(Classes item) {
+        if (classesRepository.findByDayOfWeekAndTimeAndRoom(item.getDayOfWeek(), item.getTime(), item.getRoom()).isEmpty()) {
+            return classesRepository.save(item);
+        } else {
+            return null;
+        }
+    }
 }

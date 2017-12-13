@@ -53,6 +53,8 @@ export class StudentEnrollmentComponent implements OnInit {
         this.selectedCourse = null;
         this.selectedClasses = null;
         this.classesOptions = null;
+      }, error => {
+        alert("err");
       });
   }
 }

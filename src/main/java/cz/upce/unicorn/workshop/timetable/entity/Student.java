@@ -25,6 +25,7 @@ public class Student {
 
     private String email;
 
+    @Column(columnDefinition = "bit default 1")
     private Boolean isActive;
 
     @OneToMany(mappedBy = "student")
