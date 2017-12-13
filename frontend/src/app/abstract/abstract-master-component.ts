@@ -22,7 +22,6 @@ export class AbstractMasterComponent<T extends AbstractEntity, S extends Abstrac
   }
 
   delete(item: T): void {
-    this.items = this.items.filter(h => h !== item);
-    this._service.delete(item).subscribe(item => console.log(item));
+    this._service.delete(item).subscribe(cb => {if (cb === null) {this.items = this.items.filter(h => h !== item)}});
   }
 }

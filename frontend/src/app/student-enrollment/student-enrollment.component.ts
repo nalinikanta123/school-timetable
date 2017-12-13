@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StudentService} from "../service/student.service";
 import {StudentEnrollmentService} from "../service/student-enrollment.service";
 import {Student} from "../entity/student";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Course} from "../entity/course";
 import {CourseService} from "../service/course.service";
 import {Classes} from "../entity/classes";
@@ -16,7 +16,8 @@ import {Enrollment} from "../entity/enrollment";
 })
 export class StudentEnrollmentComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private classesService: ClassesService, private courseService: CourseService, private studentService: StudentService, private enrollmentService: StudentEnrollmentService) {
+  constructor( private router: Router, private route: ActivatedRoute, private classesService: ClassesService, private courseService: CourseService, private studentService: StudentService, private enrollmentService: StudentEnrollmentService) {
+
   }
 
   studentModel: Student;
@@ -49,12 +50,14 @@ export class StudentEnrollmentComponent implements OnInit {
     enrollment.student = student;
     enrollment.classes = classes;
     this.enrollmentService.addOrUpdate(enrollment).subscribe(
-      item => {
-        this.selectedCourse = null;
-        this.selectedClasses = null;
-        this.classesOptions = null;
-      }, error => {
-        alert("err");
+      item => { console.log(item);
+        if (item !== undefined) {
+          this.selectedCourse = null;
+          this.selectedClasses = null;
+          this.classesOptions = null;
+          console.log([this.router.url]);
+          this.router.navigate([this.router.url]);
+        }
       });
   }
 }

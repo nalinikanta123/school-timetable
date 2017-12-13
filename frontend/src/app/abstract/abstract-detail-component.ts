@@ -30,7 +30,7 @@ export class AbstractDetailComponent<T extends AbstractEntity, S extends Abstrac
   }
 
   save(): void {
-    this._service.addOrUpdate(this._item).subscribe(() => this.goBack());
+    this._service.addOrUpdate(this._item).subscribe(cb => {if (cb !== null) {this.goBack()}});
   }
 
   loadById(): void {

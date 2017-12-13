@@ -4,10 +4,7 @@ import cz.upce.unicorn.workshop.timetable.entity.Classes;
 import cz.upce.unicorn.workshop.timetable.repository.AbstractRepository;
 import cz.upce.unicorn.workshop.timetable.repository.ClassesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,11 +26,16 @@ public class ClassesController extends AbstractController<Classes> {
     }
 
     @Override
-    public Classes saveOrUpdate(Classes item) {
-        if (classesRepository.findByDayOfWeekAndTimeAndRoom(item.getDayOfWeek(), item.getTime(), item.getRoom()).isEmpty()) {
+    public Classes saveOrUpdate(@RequestBody Classes item) {
+        List<Classes> classes = getByDayOfWeekAndTimeAndRoom(item);
+        if (classes.isEmpty() || (item.getId() != null && classes.size() == 1 && classes.get(0).getId().equals(item.getId()))) {
             return classesRepository.save(item);
         } else {
             return null;
         }
+    }
+
+    private List<Classes> getByDayOfWeekAndTimeAndRoom(Classes item) {
+        return classesRepository.findByDayOfWeekAndTimeAndRoom(item.getDayOfWeek(), item.getTime(), item.getRoom());
     }
 }
