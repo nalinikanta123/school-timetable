@@ -10,12 +10,16 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./student-classes-enrolled-list.component.css']
 })
 export class StudentClassesEnrolledListComponent extends AbstractMasterComponent<Enrollment, StudentEnrollmentService> {
-  constructor(private route: ActivatedRoute,service: StudentEnrollmentService) {
+  constructor(private route: ActivatedRoute, service: StudentEnrollmentService) {
     super(service);
   }
 
-
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.service.findEnrollmentsByStudentId(id).subscribe(items => this.items = items);
+  }
+
+  enrollmentUpdated(enrollment: Enrollment): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.findEnrollmentsByStudentId(id).subscribe(items => this.items = items);
   }

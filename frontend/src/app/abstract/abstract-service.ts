@@ -23,8 +23,6 @@ export class AbstractService<T extends AbstractEntity> {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
-
-
   getAll(): Observable<T[]> {
     this.log('Service: fetched');
     return this._http.get<T[]>(this.getRestApiUrl());

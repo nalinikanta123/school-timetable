@@ -41,6 +41,14 @@ export class ClassesDetailComponent extends AbstractDetailComponent<Classes, Cla
     this.courseService.getAll().subscribe(items => this.courseOptions = items);
   }
 
+
+  public onItemLoaded(item: Classes) {
+    /*this.selectedDayOfWeek = this.item.dayOfWeek;
+    this.selectedTime = this.item.time;
+    console.log(this.item.course);
+    this.selectedCourse = this.item.course;*/
+  }
+
   selectedDayOfWeekChanged() {
     this.item.dayOfWeek = this.selectedDayOfWeek.name;
   }

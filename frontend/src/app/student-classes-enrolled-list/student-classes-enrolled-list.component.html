@@ -1,6 +1,6 @@
 <h2>Enrollments of the student</h2>
 <div class="jumbotron">
-  <app-student-enrollment></app-student-enrollment>
+  <app-student-enrollment (studentEnrollmentEvent)="enrollmentUpdated($event)"></app-student-enrollment>
 </div>
 <table class="table" *ngIf="items">
   <tr *ngFor="let item of items">

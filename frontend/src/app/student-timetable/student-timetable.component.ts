@@ -38,4 +38,9 @@ export class StudentTimetableComponent implements OnInit {
       }
     }
   }
+
+  enrollmentUpdated(enrollment: Enrollment): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.enrollmentService.findEnrollmentsByStudentId(id).subscribe(items => this.enrollments = items);
+  }
 }

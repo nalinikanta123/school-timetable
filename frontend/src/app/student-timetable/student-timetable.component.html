@@ -1,10 +1,10 @@
 <h2>Student timetable</h2>
 
 <div class="jumbotron">
-  <app-student-enrollment></app-student-enrollment>
+  <app-student-enrollment (studentEnrollmentEvent)="enrollmentUpdated($event)"></app-student-enrollment>
 </div>
 
-<table>
+<table class="table" border="1px">
   <tr>
     <td></td>
     <td *ngFor="let time of timetableHours">
@@ -16,6 +16,10 @@
     <td>{{day}}</td>
     <td *ngFor="let time of timetableHours">
       <span *ngIf="getEnrolledSubjects(day, time.name)">
+        <!--todo optimalizace - nabindování do proměnné a následné její využití -->
+        <a routerLink="/classes-detail/{{getEnrolledSubjects(day, time.name).classes.course.id}}">
+          {{getEnrolledSubjects(day, time.name).classes.course.shortName}}
+        </a>
         {{getEnrolledSubjects(day, time.name).classes.room}}
       </span>
 

@@ -1,0 +1,33 @@
+<div>
+  <label>Students:
+    <select class="form-control" [(ngModel)]="selectStudent">
+      <option *ngFor="let s of studentOptions" [ngValue]="s">{{s.firstName}} {{s.lastName}}</option>
+    </select>
+  </label>
+
+  <button class="btn btn-primary" (click)="addStudent()">Add student</button>
+
+</div>
+
+<ul *ngFor="let student of selectedStudents">
+  <li>{{student.firstName}} {{ student.lastName}}
+    <button class="btn btn-primary" (click)="removeStudent(student)">X</button>
+  </li>
+</ul>
+
+
+<table *ngIf="studentsEnrollments">
+  <tr>
+    <td></td>
+    <td *ngFor="let time of timetableHours">
+      {{time.value}}
+      <!--{{getEnrolledSubjects(day, time)}}-->
+    </td>
+  </tr>
+  <tr *ngFor="let day of days">
+    <td>{{day}}</td>
+    <td *ngFor="let time of timetableHours">
+      {{isFreeTime(day, time.name)}}
+    </td>
+  </tr>
+</table>

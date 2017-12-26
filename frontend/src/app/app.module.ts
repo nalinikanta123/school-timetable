@@ -22,6 +22,7 @@ import {StudentEnrollmentComponent} from './student-enrollment/student-enrollmen
 import {StudentEnrollmentService} from "./service/student-enrollment.service";
 import {StudentsClassesEnrolledComponent} from './students-classes-enrolled/students-classes-enrolled.component';
 import {StudentClassesEnrolledListComponent} from './student-classes-enrolled-list/student-classes-enrolled-list.component';
+import {FreeTimeComponent} from './free-time/free-time.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {StudentClassesEnrolledListComponent} from './student-classes-enrolled-li
     StudentTimetableComponent,
     StudentEnrollmentComponent,
     StudentsClassesEnrolledComponent,
-    StudentClassesEnrolledListComponent
+    StudentClassesEnrolledListComponent,
+    FreeTimeComponent
   ],
   imports: [
     BrowserModule,
