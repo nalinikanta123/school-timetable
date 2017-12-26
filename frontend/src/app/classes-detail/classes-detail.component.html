@@ -1,5 +1,7 @@
 <div *ngIf="item"><h2>
-  Classes: {{item.room}}
+  <span *ngIf="item.course">
+  Classes: {{item.course.fullName}}
+  </span>
 </h2>
   <div>
     <label>Day:
@@ -22,11 +24,11 @@
 
 
     <label>Room:
-      <input class="form-control" [(ngModel)]="item.room" >
+      <input class="form-control" [(ngModel)]="item.room">
     </label>
 
     <label>Lecturer:
-      <input class="form-control" [(ngModel)]="item.lecturerName" >
+      <input class="form-control" [(ngModel)]="item.lecturerName">
     </label>
 
   </div>

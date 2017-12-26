@@ -38,15 +38,19 @@ export class ClassesDetailComponent extends AbstractDetailComponent<Classes, Cla
     super.ngOnInit();
     this.dayOfWeekOptions = EnumValues.getNamesAndValues(DayOfWeek);
     this.timeOptions = EnumValues.getNamesAndValues(TimeEnum);
-    this.courseService.getAll().subscribe(items => this.courseOptions = items);
+    this.courseService.getAll().subscribe(items => {
+        this.courseOptions = items;
+        if (this.item !== undefined && this.item.course !== undefined && this.item.course !== undefined) {
+          this.selectedCourse = this.courseOptions.find(item => item.id === this.item.course.id);
+        }
+      }
+    );
   }
 
 
   public onItemLoaded(item: Classes) {
-    /*this.selectedDayOfWeek = this.item.dayOfWeek;
-    this.selectedTime = this.item.time;
-    console.log(this.item.course);
-    this.selectedCourse = this.item.course;*/
+    this.selectedDayOfWeek = this.dayOfWeekOptions.find(item => item.name === this.item.dayOfWeek);
+    this.selectedTime = this.timeOptions.find(item => item.name === this.item.time);
   }
 
   selectedDayOfWeekChanged() {
@@ -59,6 +63,5 @@ export class ClassesDetailComponent extends AbstractDetailComponent<Classes, Cla
 
   selectedCourseChanged() {
     this.item.course = this.selectedCourse;
-    console.log(JSON.stringify(this.item));
   }
 }
