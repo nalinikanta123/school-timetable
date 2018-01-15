@@ -1,11 +1,15 @@
 package cz.upce.unicorn.workshop.timetable.controller;
 
+import cz.upce.unicorn.workshop.timetable.entity.Identifiable;
 import cz.upce.unicorn.workshop.timetable.repository.AbstractRepository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-public abstract class AbstractController<T> {
+public abstract class AbstractController<T extends Identifiable> {
 
     protected abstract AbstractRepository<T> getRepository();
 

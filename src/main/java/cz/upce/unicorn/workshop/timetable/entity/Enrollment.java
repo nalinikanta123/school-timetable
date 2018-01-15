@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "enrollment")
 @ToString(exclude = {"classes"})
-public class Enrollment {
+public class Enrollment implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

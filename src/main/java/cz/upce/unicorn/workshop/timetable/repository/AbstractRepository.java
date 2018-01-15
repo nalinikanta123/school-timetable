@@ -1,10 +1,18 @@
 package cz.upce.unicorn.workshop.timetable.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
+import cz.upce.unicorn.workshop.timetable.entity.Identifiable;
 
-@NoRepositoryBean
-public interface AbstractRepository<T> extends JpaRepository<T, Integer> {
+import java.util.List;
+
+public interface AbstractRepository<T extends Identifiable> {
 
     T findById(Integer id);
+
+    T save(T item);
+
+    List<T> findAll();
+
+    void delete(Integer id);
+
+    T saveAndFlush(T item);
 }

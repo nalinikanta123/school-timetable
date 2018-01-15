@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "classes")
 @ToString(exclude = {"course","enrollments"})
-public class Classes  {
+public class Classes implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

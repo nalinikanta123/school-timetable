@@ -3,7 +3,7 @@ package cz.upce.unicorn.workshop.timetable.controller;
 import cz.upce.unicorn.workshop.timetable.entity.Classes;
 import cz.upce.unicorn.workshop.timetable.repository.AbstractRepository;
 import cz.upce.unicorn.workshop.timetable.repository.ClassesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import cz.upce.unicorn.workshop.timetable.service.ServiceLocator;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,8 +12,7 @@ import java.util.List;
 @RequestMapping("classes")
 public class ClassesController extends AbstractController<Classes> {
 
-    @Autowired
-    private ClassesRepository classesRepository;
+    private ClassesRepository classesRepository = ServiceLocator.getClassesRepository();
 
     @Override
     protected AbstractRepository<Classes> getRepository() {

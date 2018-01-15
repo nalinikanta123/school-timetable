@@ -3,7 +3,7 @@ package cz.upce.unicorn.workshop.timetable.controller;
 import cz.upce.unicorn.workshop.timetable.entity.Enrollment;
 import cz.upce.unicorn.workshop.timetable.repository.AbstractRepository;
 import cz.upce.unicorn.workshop.timetable.repository.EnrollmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import cz.upce.unicorn.workshop.timetable.service.ServiceLocator;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +15,7 @@ import java.util.List;
 @RequestMapping("enrollment")
 public class EnrollmentController extends AbstractController<Enrollment> {
 
-    @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private EnrollmentRepository enrollmentRepository = ServiceLocator.getEnrollmentRepository();
 
     @Override
     protected AbstractRepository<Enrollment> getRepository() {

@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "student")
 @ToString(exclude = "enrollments")
-public class Student {
+public class Student implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
