@@ -16,11 +16,11 @@ public class Enrollment {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "student_id",referencedColumnName = "id")
     private Student student;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "classes_id", referencedColumnName = "id")
     private Classes classes;
 
 }

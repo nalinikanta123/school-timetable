@@ -1,8 +1,6 @@
 package cz.upce.unicorn.workshop.timetable.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
 
@@ -19,11 +17,13 @@ public class Course  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "short_name", length = 127)
     private String shortName;
 
+    @Column(name = "full_name", length = 127)
     private String fullName;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "syllabus", columnDefinition = "TEXT")
     private String syllabus;
 
     @OneToMany(mappedBy = "course")
