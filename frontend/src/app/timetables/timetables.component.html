@@ -1,0 +1,37 @@
+<div>
+  <label>Students:
+    <select class="form-control" [(ngModel)]="selectStudent">
+      <option *ngFor="let s of studentOptions" [ngValue]="s">{{s.firstName}} {{s.lastName}}</option>
+    </select>
+  </label>
+
+  <button class="btn btn-primary" (click)="addNewStudentsTimetable(selectStudent)">Add student</button>
+
+</div>
+
+
+<div *ngFor="let student of students">
+  <h3>{{student.firstName}} {{ student.lastName}}</h3>
+  <table class="table" border="1px">
+    <tr>
+      <td></td>
+      <td *ngFor="let time of timetableHours">
+        {{time.value}}
+        {{getEnrolledSubjects(student, day, time)}}
+      </td>
+    </tr>
+    <tr *ngFor="let day of days">
+      <td>{{day}}</td>
+      <td *ngFor="let time of timetableHours">
+      <span *ngIf="getEnrolledSubjects(student, day, time.name)">
+        <!--todo optimalizace - nabindování do proměnné a následné její využití -->
+        <a routerLink="/classes-detail/{{getEnrolledSubjects(student, day, time.name).classes.course.id}}">
+          {{getEnrolledSubjects(student,day, time.name).classes.course.shortName}}
+        </a>
+        {{getEnrolledSubjects(student,day, time.name).classes.room}}
+      </span>
+
+      </td>
+    </tr>
+  </table>
+</div>

@@ -10,6 +10,7 @@ import {StudentTimetableComponent} from "./student-timetable/student-timetable.c
 import {StudentsClassesEnrolledComponent} from "./students-classes-enrolled/students-classes-enrolled.component";
 import {StudentClassesEnrolledListComponent} from "./student-classes-enrolled-list/student-classes-enrolled-list.component";
 import {FreeTimeComponent} from "./free-time/free-time.component";
+import {TimetablesComponent} from "./timetables/timetables.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'student-detail/:id', component: StudentDetailComponent},
   {path: 'student-detail', component: StudentDetailComponent},
   {path: 'free-time', component: FreeTimeComponent},
+  {path: 'timetables', component: TimetablesComponent},
   {path: 'courses', component: CoursesComponent},
   {path: 'course-detail/:id', component: CoursesDetailComponent},
   {path: 'course-detail', component: CoursesDetailComponent},
