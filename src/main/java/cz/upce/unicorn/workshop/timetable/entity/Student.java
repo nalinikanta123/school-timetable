@@ -14,7 +14,7 @@ import java.util.List;
 public class Student implements Identifiable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "first_name", length = 50)
@@ -30,7 +30,7 @@ public class Student implements Identifiable {
     private String email;
 
     @Column(name = "is_active", columnDefinition = "bit default 1")
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     @OneToMany(mappedBy = "student")
     @JsonIgnore

@@ -16,7 +16,7 @@ import java.util.List;
 public class Classes implements Identifiable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "time")
@@ -35,11 +35,9 @@ public class Classes implements Identifiable {
 
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "id")
-//    @JsonManagedReference
-//    @JsonIgnore
     private Course course;
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "classes", orphanRemoval = true)
     @JsonIgnore
     private List<Enrollment> enrollments;
 }

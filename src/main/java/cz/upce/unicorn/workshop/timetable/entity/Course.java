@@ -14,7 +14,7 @@ import java.util.List;
 public class Course implements Identifiable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "short_name", length = 127)
@@ -26,8 +26,7 @@ public class Course implements Identifiable {
     @Column(name = "syllabus", columnDefinition = "TEXT")
     private String syllabus;
 
-    @OneToMany(mappedBy = "course")
-//    @JsonBackReference
+    @OneToMany(mappedBy = "course", orphanRemoval = true)
     @JsonIgnore
     private List<Classes> classes;
 

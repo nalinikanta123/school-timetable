@@ -14,5 +14,4 @@ public interface AbstractRepository<T extends Identifiable> {
 
     void delete(Integer id);
 
-    T saveAndFlush(T item);
 }

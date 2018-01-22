@@ -24,7 +24,7 @@ public class StudentController extends AbstractController<Student> {
         Student byId = studentRepository.findById(id);
         if (byId != null) {
             byId.setIsActive(false);
-            studentRepository.saveAndFlush(byId);
+            studentRepository.save(byId);
         }
     }
 }

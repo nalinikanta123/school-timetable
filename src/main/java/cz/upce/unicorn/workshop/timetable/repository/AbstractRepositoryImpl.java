@@ -55,14 +55,14 @@ public abstract class AbstractRepositoryImpl<T extends Identifiable> implements 
 
     @Override
     public void delete(Integer id) {
-        T product = ServiceLocator.createEntityManager().find(getClazz(), id);
-        ServiceLocator.createEntityManager().remove(product);
+        EntityManager entityManager = ServiceLocator.createEntityManager();
+        entityManager.getTransaction().begin();
+        T entity = entityManager.find(getClazz(), id);
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
     }
 
-    @Override
-    public T saveAndFlush(T item) {
-        T saved = this.save(item);
-        ServiceLocator.createEntityManager().flush();
-        return saved;
-    }
+
 }

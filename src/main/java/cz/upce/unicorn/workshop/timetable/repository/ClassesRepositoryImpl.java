@@ -2,6 +2,7 @@ package cz.upce.unicorn.workshop.timetable.repository;
 
 import cz.upce.unicorn.workshop.timetable.entity.Classes;
 import cz.upce.unicorn.workshop.timetable.entity.Course;
+import cz.upce.unicorn.workshop.timetable.entity.Enrollment;
 import cz.upce.unicorn.workshop.timetable.model.TimeEnum;
 import cz.upce.unicorn.workshop.timetable.service.ServiceLocator;
 
@@ -46,6 +47,25 @@ public class ClassesRepositoryImpl extends AbstractRepositoryImpl<Classes> imple
         cq.select(root).where(predicates.toArray(new Predicate[]{}));
 
         return entityManager.createQuery(cq).getResultList();
+    }
+
+    @Override
+    public Classes save(Classes item) {
+        Classes result = null;
+        EntityManager entityManager = ServiceLocator.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        if (item.getId() == null) {
+            result = entityManager.merge(item);
+        } else {
+            List<Enrollment> byCourseId = ServiceLocator.getEnrollmentRepository().findEnrollmentByClassesId(item.getId());
+            item.setEnrollments(byCourseId);
+            result = entityManager.merge(item);
+        }
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
     }
 
     @Override
